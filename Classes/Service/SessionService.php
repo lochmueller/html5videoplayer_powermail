@@ -51,7 +51,7 @@ class SessionService extends AbstractService {
 	 */
 	public function set($name, $value) {
 		$setValue = serialize($value);
-		setcookie($name, $setValue);
+		setcookie($name, $setValue, NULL, '/');
 		$_COOKIE[$name] = $setValue;
 	}
 }
