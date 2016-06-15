@@ -10,7 +10,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'author_email' => 'tim@fruit-lab.de',
 	'constraints'  => array(
 		'depends' => array(
-			'typo3'            => '6.1.0-7.0.99',
+			'typo3'            => '6.1.0-8.1.99',
 			'html5videoplayer' => '6.3.1-0.0.0',
 			'powermail'        => '2.1.0-0.0.0',
 		),
