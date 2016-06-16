@@ -25,5 +25,9 @@ $tempColumns = [
 ];
 
 ExtensionManagementUtility::addTCAcolumns('tx_html5videoplayer_domain_model_video', $tempColumns);
-ExtensionManagementUtility::addToAllTCAtypes('tx_html5videoplayer_domain_model_video', implode(',', array_keys($tempColumns)), '',
-    'after:vimeo');
+ExtensionManagementUtility::addToAllTCAtypes(
+    'tx_html5videoplayer_domain_model_video',
+    implode(',', array_keys($tempColumns)),
+    '',
+    'after:vimeo'
+);

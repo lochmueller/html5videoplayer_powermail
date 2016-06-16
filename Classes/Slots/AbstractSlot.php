@@ -16,15 +16,17 @@ use TYPO3\CMS\Extbase\Object\ObjectManager;
  *
  * @author     Tim Lochmüller
  */
-abstract class AbstractSlot {
+abstract class AbstractSlot
+{
 
-	/**
-	 * Get the access service+
-	 *
-	 * @return AccessService
-	 */
-	protected function getAccessService() {
-		$objectManager = new ObjectManager();
-		return $objectManager->get(AccessService::class);
-	}
+    /**
+     * Get the access service+
+     *
+     * @return AccessService
+     */
+    protected function getAccessService()
+    {
+        $objectManager = new ObjectManager();
+        return $objectManager->get(AccessService::class);
+    }
 }

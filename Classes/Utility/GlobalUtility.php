@@ -16,23 +16,26 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
  *
  * @author Tim Lochmüller
  */
-class GlobalUtility {
+class GlobalUtility
+{
 
-	/**
-	 * Get the TSFE
-	 *
-	 * @return TypoScriptFrontendController
-	 */
-	static public function getTypoScriptFrontendController() {
-		return $GLOBALS['TSFE'];
-	}
+    /**
+     * Get the TSFE
+     *
+     * @return TypoScriptFrontendController
+     */
+    public static function getTypoScriptFrontendController()
+    {
+        return $GLOBALS['TSFE'];
+    }
 
-	/**
-	 * Get the database connection
-	 *
-	 * @return DatabaseConnection
-	 */
-	static public function getDatabaseConnection() {
-		return $GLOBALS['TYPO3_DB'];
-	}
+    /**
+     * Get the database connection
+     *
+     * @return DatabaseConnection
+     */
+    public static function getDatabaseConnection()
+    {
+        return $GLOBALS['TYPO3_DB'];
+    }
 }

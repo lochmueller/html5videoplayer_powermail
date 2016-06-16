@@ -17,18 +17,19 @@ use In2code\Powermail\Domain\Model\Mail;
  *
  * @author Tim Lochmüller
  */
-class Form extends AbstractSlot {
+class Form extends AbstractSlot
+{
 
-	/**
-	 * Slot for powermail
-	 *
-	 * @param Mail           $mail
-	 * @param string         $hash
-	 * @param FormController $formController
-	 */
-	public function createActionAfterSubmitView(Mail $mail, $hash, FormController $formController) {
-		$this->getAccessService()
-			->triggerFormSubmit($mail->getForm());
-	}
-
+    /**
+     * Slot for powermail
+     *
+     * @param Mail           $mail
+     * @param string         $hash
+     * @param FormController $formController
+     */
+    public function createActionAfterSubmitView(Mail $mail, $hash, FormController $formController)
+    {
+        $this->getAccessService()
+            ->triggerFormSubmit($mail->getForm());
+    }
 }
