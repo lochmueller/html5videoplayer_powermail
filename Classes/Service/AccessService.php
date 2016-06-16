@@ -91,7 +91,7 @@ class AccessService extends AbstractService {
 	 */
 	public function triggerFormSubmit(Form $form) {
 		if ($this->sessionService->has('videoReturnUrl') && $this->isProtectionForm($form)) {
-			$forms = $this->sessionService->has($this->sessionName) ? $this->sessionService->get($this->sessionName) : array();
+			$forms = $this->sessionService->has($this->sessionName) ? $this->sessionService->get($this->sessionName) : [];
 			$forms[] = $form->getUid();
 			$this->sessionService->set($this->sessionName, $forms);
 			HttpUtility::redirect($this->sessionService->get('videoReturnUrl'));
@@ -136,7 +136,7 @@ class AccessService extends AbstractService {
 	 * @return bool
 	 */
 	protected function isAccessableByCurrentUser($formProtectionId) {
-		$forms = $this->sessionService->has($this->sessionName) ? $this->sessionService->get($this->sessionName) : array();
+		$forms = $this->sessionService->has($this->sessionName) ? $this->sessionService->get($this->sessionName) : [];
 		return in_array((int)$formProtectionId, $forms);
 	}
 

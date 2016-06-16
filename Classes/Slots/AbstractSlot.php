@@ -8,6 +8,7 @@
 
 namespace FRUIT\Html5videoplayerPowermail\Slots;
 
+use FRUIT\Html5videoplayerPowermail\Service\AccessService;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
@@ -20,10 +21,10 @@ abstract class AbstractSlot {
 	/**
 	 * Get the access service+
 	 *
-	 * @return \FRUIT\Html5videoplayerPowermail\Service\AccessService
+	 * @return AccessService
 	 */
 	protected function getAccessService() {
 		$objectManager = new ObjectManager();
-		return $objectManager->get('FRUIT\\Html5videoplayerPowermail\\Service\\AccessService');
+		return $objectManager->get(AccessService::class);
 	}
 }

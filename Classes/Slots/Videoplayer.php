@@ -13,7 +13,7 @@ namespace FRUIT\Html5videoplayerPowermail\Slots;
  *
  * @author Tim Lochmüller
  */
-class VideoPlayer extends AbstractSlot {
+class Videoplayer extends AbstractSlot {
 
 	/**
 	 * Slot for html5videoplayer
