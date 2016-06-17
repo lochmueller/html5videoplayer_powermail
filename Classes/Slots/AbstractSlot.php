@@ -6,9 +6,9 @@
  * @author  Tim Lochmüller
  */
 
-namespace FRUIT\Html5videoplayerPowermail\Slots;
+namespace HVP\Html5videoplayerPowermail\Slots;
 
-use FRUIT\Html5videoplayerPowermail\Service\AccessService;
+use HVP\Html5videoplayerPowermail\Service\AccessService;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**

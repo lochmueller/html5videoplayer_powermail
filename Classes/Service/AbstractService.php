@@ -6,7 +6,7 @@
  * @author  Tim Lochmüller
  */
 
-namespace FRUIT\Html5videoplayerPowermail\Service;
+namespace HVP\Html5videoplayerPowermail\Service;
 
 use TYPO3\CMS\Core\SingletonInterface;
 

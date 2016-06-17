@@ -9,12 +9,12 @@ $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TY
 $signalSlotDispatcher->connect(
     \In2code\Powermail\Controller\FormController::class,
     'createActionAfterSubmitView',
-    \FRUIT\Html5videoplayerPowermail\Slots\Form::class,
+    \HVP\Html5videoplayerPowermail\Slots\Form::class,
     'createActionAfterSubmitView'
 );
 $signalSlotDispatcher->connect(
     \HVP\Html5videoplayer\Controller\VideoplayerController::class,
     \HVP\Html5videoplayer\Controller\VideoplayerController::class . '::detailAction',
-    \FRUIT\Html5videoplayerPowermail\Slots\Videoplayer::class,
+    \HVP\Html5videoplayerPowermail\Slots\Videoplayer::class,
     'detailAction'
 );

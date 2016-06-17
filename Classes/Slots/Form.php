@@ -7,7 +7,7 @@
  */
 
 
-namespace FRUIT\Html5videoplayerPowermail\Slots;
+namespace HVP\Html5videoplayerPowermail\Slots;
 
 use In2code\Powermail\Controller\FormController;
 use In2code\Powermail\Domain\Model\Mail;

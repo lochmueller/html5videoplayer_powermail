@@ -6,9 +6,9 @@
  * @author     Tim Lochmüller
  */
 
-namespace FRUIT\Html5videoplayerPowermail\Service;
+namespace HVP\Html5videoplayerPowermail\Service;
 
-use FRUIT\Html5videoplayerPowermail\Utility\GlobalUtility;
+use HVP\Html5videoplayerPowermail\Utility\GlobalUtility;
 use HVP\Html5videoplayer\Domain\Model\Video;
 use In2code\Powermail\Domain\Model\Form;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
@@ -28,7 +28,7 @@ class AccessService extends AbstractService
     /**
      * Session service
      *
-     * @var \FRUIT\Html5videoplayerPowermail\Service\SessionService
+     * @var \HVP\Html5videoplayerPowermail\Service\SessionService
      * @inject
      */
     protected $sessionService;

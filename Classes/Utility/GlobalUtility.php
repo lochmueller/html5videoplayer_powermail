@@ -6,7 +6,7 @@
  * @author  Tim Lochmüller
  */
 
-namespace FRUIT\Html5videoplayerPowermail\Utility;
+namespace HVP\Html5videoplayerPowermail\Utility;
 
 use TYPO3\CMS\Core\Database\DatabaseConnection;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;

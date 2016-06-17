@@ -6,7 +6,7 @@
  * @author  Tim Lochmüller
  */
 
-namespace FRUIT\Html5videoplayerPowermail\Slots;
+namespace HVP\Html5videoplayerPowermail\Slots;
 
 /**
  * Slot for html5videoplayer

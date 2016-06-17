@@ -3,9 +3,9 @@
  * SessionServiceTest
  */
 
-namespace FRUIT\Html5videoplayerPowermail\Tests\Unit\Service;
+namespace HVP\Html5videoplayerPowermail\Tests\Unit\Service;
 
-use FRUIT\Html5videoplayerPowermail\Service\SessionService;
+use HVP\Html5videoplayerPowermail\Service\SessionService;
 use TYPO3\CMS\Core\Tests\UnitTestCase;
 
 /**
