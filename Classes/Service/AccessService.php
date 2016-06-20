@@ -71,8 +71,9 @@ class AccessService extends AbstractService
         }
 
         // disable the cache
-        GlobalUtility::getTypoScriptFrontendController()
-            ->set_no_cache('Do not cache video detail page, because every request is check via html5videoplayer_powermail');
+        $message = 'Do not cache video detail page, because every request is check via html5videoplayer_powermail';
+        GlobalUtility::getTypoScriptFrontendController($message)
+            ->set_no_cache();
 
         if ($this->isAccessableByCurrentUser($formProtection)) {
             return;
@@ -132,7 +133,8 @@ class AccessService extends AbstractService
     {
         $database = GlobalUtility::getDatabaseConnection();
         $pageRepository = new PageRepository();
-        return $database->exec_SELECTgetRows('uid,pid,pi_flexform', 'tt_content', 'CType="list" AND list_type="powermail_pi1"' . $pageRepository->enableFields('tt_content'));
+        $where = 'CType="list" AND list_type="powermail_pi1"' . $pageRepository->enableFields('tt_content');
+        return $database->exec_SELECTgetRows('uid,pid,pi_flexform', 'tt_content', $where);
     }
 
     /**

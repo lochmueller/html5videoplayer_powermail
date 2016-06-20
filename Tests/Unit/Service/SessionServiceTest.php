@@ -5,7 +5,6 @@
 
 namespace HVP\Html5videoplayerPowermail\Tests\Unit\Service;
 
-use HVP\Html5videoplayerPowermail\Service\SessionService;
 use TYPO3\CMS\Core\Tests\UnitTestCase;
 
 /**
@@ -16,22 +15,11 @@ class SessionServiceTest extends UnitTestCase
 
     /**
      * @test
+     * @todo define same tests
      */
-    public function testSetAndGet()
+    public function testEmpty()
     {
-        $service = new SessionService();
-        $service->set('test', 'value');
-        $this->assertEquals('value', $service->get('test'));
-
+        $this->assertSame(true, true);
     }
 
-    /**
-     * @test
-     */
-    public function testSetAndHas()
-    {
-        $service = new SessionService();
-        $service->set('test', 'value');
-        $this->assertEquals(true, $service->has('test'));
-    }
 }
