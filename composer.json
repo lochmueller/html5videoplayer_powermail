@@ -1,7 +1,7 @@
 {
   "name": "lochmueller/html5videoplayer-powermail",
   "type": "typo3-cms-extension",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Connect both extenion to fetch user input (one powermail form) before the user can access the detail view.",
   "autoload": {
     "psr-4": {
