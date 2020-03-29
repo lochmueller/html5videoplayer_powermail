@@ -1,7 +1,6 @@
 {
   "name": "lochmueller/html5videoplayer-powermail",
   "type": "typo3-cms-extension",
-  "version": "0.1.1",
   "description": "Connect both extenion to fetch user input (one powermail form) before the user can access the detail view.",
   "autoload": {
     "psr-4": {
@@ -28,16 +27,14 @@
     }
   ],
   "require": {
-    "php": ">=5.5.0",
-    "typo3/cms-core": "~6.2.0||~7.6.0||~8.1.0||dev-master",
-    "typo3/cms": "^7.6.0"
+    "php": "^5.5||^5.6||^7.0||^7.1||^7.2||^7.3",
+    "typo3/cms-core": "^6.2||^7.6||^8.7"
   },
   "replace": {
-    "html5videoplayer-powermail": "self.version",
     "typo3-ter/html5videoplayer-powermail": "self.version"
   },
   "homepage": "https://github.com/lochmueller/html5videoplayer_powermail",
-  "license": "GPL-2.0+",
+  "license": "GPL-2.0-or-later",
   "support": {
     "issues": "https://github.com/lochmueller/html5videoplayer_powermail/issues"
   },
