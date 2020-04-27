@@ -12,7 +12,7 @@ $EM_CONF[$_EXTKEY] = array(
         'depends' => array(
             'typo3'            => '6.2.0-8.7.99',
             'html5videoplayer' => '6.3.1-0.0.0',
-            'powermail'        => '2.1.0-0.0.0',
+            'powermail'        => '3.0.0-0.0.0',
         ),
     ),
 );

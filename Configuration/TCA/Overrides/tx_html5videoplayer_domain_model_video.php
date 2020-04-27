@@ -18,7 +18,7 @@ $tempColumns = [
                     ''
                 ]
             ],
-            'foreign_table' => 'tx_powermail_domain_model_forms',
+            'foreign_table' => 'tx_powermail_domain_model_form',
             'size'          => 1
         ]
     ],
