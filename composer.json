@@ -9,8 +9,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "HVP\\Html5videoplayerPowermail\\Tests\\": "Tests",
-      "TYPO3\\CMS\\Core\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/core/Tests/"
+      "HVP\\Html5videoplayerPowermail\\Tests\\": "Tests"
     }
   },
   "keywords": [
@@ -28,7 +27,7 @@
   ],
   "require": {
     "php": "^5.5||^5.6||^7.0||^7.1||^7.2||^7.3",
-    "typo3/cms-core": "^6.2||^7.6||^8.7"
+    "typo3/cms-core": "^6.2.31||^7.6.32||^8.7.30"
   },
   "replace": {
     "typo3-ter/html5videoplayer-powermail": "self.version"
