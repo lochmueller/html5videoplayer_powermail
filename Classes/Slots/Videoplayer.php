@@ -1,20 +1,23 @@
 <?php
-/**
- * Slot for html5videoplayer
- *
- * @package Html5videoplayerPowermail\Slots
- * @author  Tim Lochmüller
- */
 
 namespace HVP\Html5videoplayerPowermail\Slots;
 
-/**
- * Slot for html5videoplayer
- *
- * @author Tim Lochmüller
- */
-class Videoplayer extends AbstractSlot
+use HVP\Html5videoplayerPowermail\Service\AccessService;
+
+class Videoplayer
 {
+
+
+    /**
+     * Get the access service+
+     *
+     * @return AccessService
+     */
+    protected function getAccessService()
+    {
+        $objectManager = new ObjectManager();
+        return $objectManager->get(AccessService::class);
+    }
 
     /**
      * Slot for html5videoplayer

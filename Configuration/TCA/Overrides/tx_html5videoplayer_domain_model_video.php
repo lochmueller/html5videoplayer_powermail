@@ -9,17 +9,18 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 $tempColumns = [
     'powermail_protection' => [
         'exclude' => 1,
-        'label'   => 'Powermail protection',
-        'config'  => [
-            'type'          => 'select',
-            'items'         => [
+        'label' => 'Powermail protection',
+        'config' => [
+            'type' => 'select',
+            'items' => [
+                # @todo migrate
                 [
                     '** Not protected **',
                     ''
                 ]
             ],
             'foreign_table' => 'tx_powermail_domain_model_form',
-            'size'          => 1
+            'size' => 1
         ]
     ],
 ];

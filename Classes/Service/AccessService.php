@@ -1,53 +1,39 @@
 <?php
-/**
- * Handling the detail page access
- *
- * @package    Html5videoplayerPowermail\Service
- * @author     Tim Lochmüller
- */
 
 namespace HVP\Html5videoplayerPowermail\Service;
 
-use HVP\Html5videoplayerPowermail\Utility\GlobalUtility;
 use HVP\Html5videoplayer\Domain\Model\Video;
 use In2code\Powermail\Domain\Model\Form;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Service\FlexFormService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\HttpUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
-use TYPO3\CMS\Frontend\Page\PageRepository;
+use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
 
 /**
  * Handling the detail page access
- *
- * @author     Tim Lochmüller
  */
 class AccessService extends AbstractService
 {
+    protected SessionService $sessionService;
 
-    /**
-     * Session service
-     *
-     * @var \HVP\Html5videoplayerPowermail\Service\SessionService
-     * @inject
-     */
-    protected $sessionService;
+    protected UriBuilder $uriBuilder;
 
-    /**
-     * Uri Builder
-     *
-     * @var \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder
-     * @inject
-     */
-    protected $uriBuilder;
+    protected FlexFormService $flexFormService;
 
-    /**
-     * Flexform service
-     *
-     * @var \TYPO3\CMS\Extbase\Service\FlexFormService
-     * @inject
-     */
-    protected $flexFormService;
+    public function __construct(
+        SessionService  $sessionService,
+        UriBuilder      $uriBuilder,
+        FlexFormService $flexFormService
+    )
+    {
+        $this->sessionService = $sessionService;
+        $this->uriBuilder = $uriBuilder;
+        $this->flexFormService = $flexFormService;
+    }
+
 
     /**
      * The session name
@@ -72,8 +58,7 @@ class AccessService extends AbstractService
 
         // disable the cache
         $message = 'Do not cache video detail page, because every request is check via html5videoplayer_powermail';
-        GlobalUtility::getTypoScriptFrontendController($message)
-            ->set_no_cache();
+        $GLOBALS['TSFE']->set_no_cache($message);
 
         if ($this->isAccessableByCurrentUser($formProtection)) {
             return;
@@ -131,10 +116,16 @@ class AccessService extends AbstractService
      */
     protected function findPowermailPlugins()
     {
-        $database = GlobalUtility::getDatabaseConnection();
-        $pageRepository = new PageRepository();
-        $where = 'CType="list" AND list_type="powermail_pi1"' . $pageRepository->enableFields('tt_content');
-        return $database->exec_SELECTgetRows('uid,pid,pi_flexform', 'tt_content', $where);
+        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
+        return $qb->select('uid,pid,pi_flexform')
+            ->from('tt_content')
+            ->where(
+                $qb->expr()->and(
+                    $qb->expr()->eq('CType', 'list'),
+                    $qb->expr()->eq('list_type', 'powermail_pi1')
+                ))
+            ->executeQuery()
+            ->fetchAllAssociative();
     }
 
     /**
@@ -155,8 +146,13 @@ class AccessService extends AbstractService
      */
     protected function isProtectionForm(Form $form)
     {
-        return (bool)GlobalUtility::getDatabaseConnection()
-            ->exec_SELECTcountRows('*', 'tx_html5videoplayer_domain_model_video', 'powermail_protection=' . $form->getUid());
+        $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_html5videoplayer_domain_model_video');
+        return (bool)$qb->select('*')
+            ->from('tx_html5videoplayer_domain_model_video')
+            ->where($qb->expr()->eq('powermail_protection', ':uid'))
+            ->setParameter('uid', $form->getUid())
+            ->executeQuery()
+            ->rowCount();
     }
 
     /**

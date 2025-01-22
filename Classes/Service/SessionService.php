@@ -1,18 +1,7 @@
 <?php
-/**
- * Session Service
- *
- * @package Html5videoplayerPowermail\Service
- * @author  Tim Lochmüller
- */
 
 namespace HVP\Html5videoplayerPowermail\Service;
 
-/**
- * Session Service
- *
- * @author Tim Lochmüller
- */
 class SessionService extends AbstractService
 {
 

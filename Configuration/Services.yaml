@@ -1,0 +1,13 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  HVP\Html5videoplayerPowermail\:
+    resource: '../Classes/*'
+
+  HVP\Html5videoplayerPowermail\EventListener\FormControllerCreateActionAfterSubmitViewEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'ext-html5videoplayer-powermail/form-controller-create-action-after-submit-view'
