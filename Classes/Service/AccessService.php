@@ -34,18 +34,9 @@ class AccessService extends AbstractService
         $this->flexFormService = $flexFormService;
     }
 
+    protected string $sessionName = 'submittedForms';
 
-    /**
-     * The session name
-     *
-     * @var string
-     */
-    protected $sessionName = 'submittedForms';
-
-    /**
-     * @param Video $video
-     */
-    public function checkVideoAccess(Video $video = null)
+    public function checkVideoAccess(?Video $video = null)
     {
         if ($video === null) {
             return;
@@ -70,31 +61,30 @@ class AccessService extends AbstractService
 
             $uri = $this->uriBuilder->setTargetPageUid($formPage)
                 ->build();
-            HttpUtility::redirect($uri, HttpUtility::HTTP_STATUS_403);
+
+            header(HttpUtility::HTTP_STATUS_403);
+            header('Location: ' . GeneralUtility::locationHeaderUrl($uri));
+            die;
         }
     }
 
-    /**
-     * @param Form $form
-     */
     public function triggerFormSubmit(Form $form)
     {
         if ($this->sessionService->has('videoReturnUrl') && $this->isProtectionForm($form)) {
             $forms = $this->sessionService->has($this->sessionName) ? $this->sessionService->get($this->sessionName) : [];
             $forms[] = $form->getUid();
             $this->sessionService->set($this->sessionName, $forms);
-            HttpUtility::redirect($this->sessionService->get('videoReturnUrl'));
+
+            header(HttpUtility::HTTP_STATUS_303);
+            header('Location: ' . GeneralUtility::locationHeaderUrl($this->sessionService->get('videoReturnUrl')));
+            die;
         }
     }
 
     /**
      * Find the given page UID of the form Protection ID
-     *
-     * @param int $formProtectionId
-     *
-     * @return int
      */
-    protected function findFormPage($formProtectionId)
+    protected function findFormPage(int $formProtectionId):int
     {
         $pluings = $this->findPowermailPlugins();
         foreach ($pluings as $plugin) {
@@ -102,7 +92,7 @@ class AccessService extends AbstractService
             if (isset($configuration['settings']['flexform']['main']['form'])) {
                 $formId = $configuration['settings']['flexform']['main']['form'];
                 if (MathUtility::canBeInterpretedAsInteger($formId) && (int)$formId == $formProtectionId) {
-                    return $plugin['pid'];
+                    return (int)$plugin['pid'];
                 }
             }
         }
@@ -111,10 +101,8 @@ class AccessService extends AbstractService
 
     /**
      * Find all includes Powermail plugins
-     *
-     * @return array
      */
-    protected function findPowermailPlugins()
+    protected function findPowermailPlugins():array
     {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
         return $qb->select('uid,pid,pi_flexform')
@@ -128,23 +116,13 @@ class AccessService extends AbstractService
             ->fetchAllAssociative();
     }
 
-    /**
-     * @param $formProtectionId
-     *
-     * @return bool
-     */
-    protected function isAccessableByCurrentUser($formProtectionId)
+    protected function isAccessableByCurrentUser(int $formProtectionId):bool
     {
         $forms = $this->sessionService->has($this->sessionName) ? $this->sessionService->get($this->sessionName) : [];
         return in_array((int)$formProtectionId, $forms);
     }
 
-    /**
-     * @param Form $form
-     *
-     * @return bool
-     */
-    protected function isProtectionForm(Form $form)
+    protected function isProtectionForm(Form $form):bool
     {
         $qb = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_html5videoplayer_domain_model_video');
         return (bool)$qb->select('*')
@@ -157,12 +135,8 @@ class AccessService extends AbstractService
 
     /**
      * Get the Form protection value
-     *
-     * @param Video $video
-     *
-     * @return int
      */
-    protected function getFormProtection(Video $video)
+    protected function getFormProtection(Video $video):int
     {
         $record = BackendUtility::getRecord('tx_html5videoplayer_domain_model_video', $video->getUid());
         return (int)$record['powermail_protection'];

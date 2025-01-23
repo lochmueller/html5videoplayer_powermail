@@ -15,7 +15,7 @@ class FormControllerCreateActionAfterSubmitViewEventListener
         $this->accessService = $accessService;
     }
 
-    public function __invoke(FormControllerCreateActionAfterSubmitViewEvent $event)
+    public function __invoke(FormControllerCreateActionAfterSubmitViewEvent $event):void
     {
         $this->accessService->triggerFormSubmit($event->getMail()->getForm());
     }

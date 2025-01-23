@@ -11,3 +11,9 @@ services:
     tags:
       - name: event.listener
         identifier: 'ext-html5videoplayer-powermail/form-controller-create-action-after-submit-view'
+
+  HVP\Html5videoplayerPowermail\EventListener\DetailActionVariablesEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'ext-html5videoplayer-powermail/detail-action-variables'
+

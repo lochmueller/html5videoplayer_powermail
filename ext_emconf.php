@@ -11,7 +11,7 @@ $EM_CONF[$_EXTKEY] = array(
     'constraints'  => array(
         'depends' => array(
             'typo3'            => '12.4.0-12.4.99',
-            'html5videoplayer' => '11.0.0-11.99.99',
+            'html5videoplayer' => '11.1.0-11.99.99',
             'powermail'        => '12.0.0-12.99.99',
         ),
     ),

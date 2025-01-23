@@ -28,7 +28,7 @@
   "require": {
     "php": "^7.4||^8.0",
     "typo3/cms-core": "^12.4",
-    "lochmueller/html5videoplayer": "^11.0",
+    "lochmueller/html5videoplayer": "^11.1",
     "in2code/powermail": "^12.0"
   },
   "replace": {
