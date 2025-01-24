@@ -1,9 +1,5 @@
 <?php
 
-/**
- * TCA Addon for tx_html5videoplayer_domain_model_video
- */
-
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 $tempColumns = [
@@ -13,10 +9,9 @@ $tempColumns = [
         'config' => [
             'type' => 'select',
             'items' => [
-                # @todo migrate
                 [
-                    '** Not protected **',
-                    ''
+                    'label' => '** Not protected **',
+                    'value' => ''
                 ]
             ],
             'foreign_table' => 'tx_powermail_domain_model_form',

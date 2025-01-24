@@ -7,24 +7,16 @@ class SessionService extends AbstractService
 
     /**
      * Check if the value exists
-     *
-     * @param string $name
-     *
-     * @return boolean
      */
-    public function has($name)
+    public function has(string $name):bool
     {
         return isset($_COOKIE[$name]);
     }
 
     /**
-     * Get a vaukue
-     *
-     * @param string $name
-     *
      * @return mixed|null
      */
-    public function get($name)
+    public function get(string $name)
     {
         if (!$this->has($name)) {
             return null;
@@ -36,12 +28,9 @@ class SessionService extends AbstractService
     /**
      * Set a value
      *
-     * @param string $name
      * @param mixed  $value
-     *
-     * @return void
      */
-    public function set($name, $value)
+    public function set(string $name, $value):void
     {
         $setValue = serialize($value);
         setcookie($name, $setValue, null, '/');

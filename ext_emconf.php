@@ -2,7 +2,7 @@
 
 $EM_CONF[$_EXTKEY] = array(
     'title'        => 'HTML5 Video Player vs. Powermail',
-    'description'  => 'Connect both extenion to fetch user input (one powermail form) before the user can access the detail view.',
+    'description'  => 'Connect both extensions to fetch user input (one powermail form) before the user can access the detail view.',
     'category'     => 'plugin',
     'version'      => '0.1.1',
     'state'        => 'beta',
